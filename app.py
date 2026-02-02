@@ -16,9 +16,16 @@ header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-# Load HTML & CSS
-html_file = Path("index.html").read_text()
-css_file = Path("style.css").read_text()
+# Load files
+html = Path("index.html").read_text()
+css = Path("style.css").read_text()
 
-st.markdown(f"<style>{css_file}</style>", unsafe_allow_html=True)
-st.components.v1.html(html_file, height=4000, scrolling=True)
+# Inject CSS
+st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
+
+# Render HTML
+st.components.v1.html(
+    html,
+    height=6500,
+    scrolling=True
+)
